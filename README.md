@@ -1,0 +1,2 @@
+# app_generator_by_dify
+Difyからアプリ作成をする
