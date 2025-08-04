@@ -161,23 +161,22 @@ workflow:
     - data:
         isInLoop: false
         sourceType: if-else
-        targetType: http-request
-      id: 1754211279449-f3b8c083-710f-4e79-90f0-582f623f9125-1754211607246-target
+        targetType: tool
+      id: 1754211279449-f3b8c083-710f-4e79-90f0-582f623f9125-1754303939058-target
       source: '1754211279449'
       sourceHandle: f3b8c083-710f-4e79-90f0-582f623f9125
-      target: '1754211607246'
+      target: '1754303939058'
       targetHandle: target
       type: custom
       zIndex: 0
     - data:
-        isInIteration: false
         isInLoop: false
         sourceType: answer
-        targetType: tool
-      id: 1754303211778-source-1754303939058-target
+        targetType: assigner
+      id: 1754303211778-source-1754303321688-target
       source: '1754303211778'
       sourceHandle: source
-      target: '1754303939058'
+      target: '1754303321688'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -186,10 +185,22 @@ workflow:
         isInLoop: false
         sourceType: tool
         targetType: assigner
-      id: 1754303939058-source-1754303321688-target
+      id: 1754303939058-source-1754304568170-target
       source: '1754303939058'
       sourceHandle: source
-      target: '1754303321688'
+      target: '1754304568170'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: http-request
+      id: 1754304568170-source-1754211607246-target
+      source: '1754304568170'
+      sourceHandle: source
+      target: '1754211607246'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -204,10 +215,10 @@ workflow:
       id: '1753796379756'
       position:
         x: 30
-        y: 606
+        y: 566.5
       positionAbsolute:
         x: 30
-        y: 606
+        y: 566.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -253,10 +264,10 @@ workflow:
       id: llm
       position:
         x: 1453
-        y: 646
+        y: 639
       positionAbsolute:
         x: 1453
-        y: 646
+        y: 639
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -276,10 +287,10 @@ workflow:
       id: answer
       position:
         x: 2119
-        y: 646
+        y: 606.5
       positionAbsolute:
         x: 2119
-        y: 646
+        y: 606.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -316,10 +327,10 @@ workflow:
       id: '1754211279449'
       position:
         x: 363
-        y: 606
+        y: 566.5
       positionAbsolute:
         x: 363
-        y: 606
+        y: 566.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -340,11 +351,11 @@ workflow:
       height: 165
       id: '1754211358214'
       position:
-        x: 1453
-        y: 421
+        x: 2086
+        y: 440.5
       positionAbsolute:
-        x: 1453
-        y: 421
+        x: 2086
+        y: 440.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -370,10 +381,10 @@ workflow:
       id: '1754211533459'
       position:
         x: 1786
-        y: 646
+        y: 645.5
       positionAbsolute:
         x: 1786
-        y: 646
+        y: 645.5
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -414,12 +425,12 @@ workflow:
       height: 154
       id: '1754211607246'
       position:
-        x: 1120
-        y: 459
+        x: 1753
+        y: 440.5
       positionAbsolute:
-        x: 1120
-        y: 459
-      selected: true
+        x: 1753
+        y: 440.5
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -456,28 +467,19 @@ workflow:
           - conversation
           - phase
           write_mode: over-write
-        - input_type: variable
-          operation: over-write
-          value:
-          - '1754303939058'
-          - text
-          variable_selector:
-          - conversation
-          - gmail_address
-          write_mode: over-write
         selected: false
         title: 情報セット
         type: assigner
         version: '2'
-      height: 115
+      height: 87
       id: '1754303321688'
       position:
-        x: 1426.0885174717034
-        y: 286.3361189622246
+        x: 1120
+        y: 298.5
       positionAbsolute:
-        x: 1426.0885174717034
-        y: 286.3361189622246
-      selected: false
+        x: 1120
+        y: 298.5
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -588,15 +590,44 @@ workflow:
       id: '1754303939058'
       position:
         x: 1120
-        y: 332
+        y: 453.5
       positionAbsolute:
         x: 1120
-        y: 332
+        y: 453.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1754303939058'
+          - text
+          variable_selector:
+          - conversation
+          - gmail_address
+          write_mode: over-write
+        selected: false
+        title: 変数代入 3
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1754304568170'
+      position:
+        x: 1453
+        y: 440.5
+      positionAbsolute:
+        x: 1453
+        y: 440.5
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 243
     viewport:
-      x: -578.406163613751
-      y: -4.786601066702872
-      zoom: 0.6569743814631636
+      x: -1089.2499999999998
+      y: -40.099999999999966
+      zoom: 0.7
