@@ -43,6 +43,29 @@ pip install claude-code-sdk
 uvicorn app:app --reload --port 8000
 ```
 
+### ngrokでHTTP公開
+
+ngrokを使用してローカルサーバーを外部からアクセス可能にできます：
+
+1. **ngrokのインストール**：
+   - https://ngrok.com/ からngrokをダウンロードしてインストール
+   - アカウント作成後、認証トークンを設定
+
+2. **サーバーの公開**：
+   ```bash
+   # 別のターミナルでngrokを起動
+   ngrok http 8000
+   ```
+
+3. **Difyの設定**：
+   - ngrokが表示するHTTPS URLをDifyのHTTP Request ツールに設定
+   - 例：`https://abc123.ngrok.app/generate-code-interactive`
+
+**注意：ngrok使用時のポイント**
+- 無料版のngrokはセッション毎にURLが変わります
+- 有料版では固定URLが使用可能です
+- 生成されたアプリ（ポート8001）も別途公開する場合は別のngrokセッションが必要です
+
 ### APIエンドポイント
 
 #### POST `/generate-code-interactive`
