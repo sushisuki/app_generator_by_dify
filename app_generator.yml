@@ -1,0 +1,602 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: app_generator
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/gemini:0.3.0@3d5be07581c53609a49d2bbb47be98c2e10820591bfc99f686b005d2c1ef95d9
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/json_process:0.0.2@dde6d7b676ccdcea89206d29232181a840170c19277d3d978e27cd1e3c92c707
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables:
+  - description: ''
+    id: 844718ce-f162-4907-aee1-06e2d2f47397
+    name: gmail_address
+    selector:
+    - conversation
+    - gmail_address
+    value: ''
+    value_type: string
+  - description: ''
+    id: c7a96853-c94a-49f0-83eb-3cdee750de2a
+    name: phase
+    selector:
+    - conversation
+    - phase
+    value: ''
+    value_type: string
+  - description: ''
+    id: 3d7cca3b-b503-4858-93a9-a20fbf60025c
+    name: rdd
+    selector:
+    - conversation
+    - rdd
+    value: ''
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1753796379756-source-1754211279449-target
+      source: '1753796379756'
+      sourceHandle: source
+      target: '1754211279449'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1754211279449-false-llm-target
+      source: '1754211279449'
+      sourceHandle: 'false'
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: assigner
+      id: llm-source-1754211533459-target
+      source: llm
+      sourceHandle: source
+      target: '1754211533459'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: answer
+      id: 1754211533459-source-answer-target
+      source: '1754211533459'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: http-request
+        targetType: answer
+      id: 1754211607246-source-1754211358214-target
+      source: '1754211607246'
+      sourceHandle: source
+      target: '1754211358214'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1754211279449-true-1754303211778-target
+      source: '1754211279449'
+      sourceHandle: 'true'
+      target: '1754303211778'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1754211279449-f3b8c083-710f-4e79-90f0-582f623f9125-1754211607246-target
+      source: '1754211279449'
+      sourceHandle: f3b8c083-710f-4e79-90f0-582f623f9125
+      target: '1754211607246'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: tool
+      id: 1754303211778-source-1754303939058-target
+      source: '1754303211778'
+      sourceHandle: source
+      target: '1754303939058'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: assigner
+      id: 1754303939058-source-1754303321688-target
+      source: '1754303939058'
+      sourceHandle: source
+      target: '1754303321688'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables: []
+      height: 53
+      id: '1753796379756'
+      position:
+        x: 30
+        y: 606
+      positionAbsolute:
+        x: 30
+        y: 606
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-2.5-flash-lite
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: f1c882a4-2ef5-45a3-a2ae-9b8f342a5c2d
+          role: system
+          text: 'あなたは、要件定義書作成のスペシャリストです。
+
+            ユーザーの要望を要件定義書に起こしてください。
+
+            要件定義書以外の出力はしないでください。'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: llm
+      position:
+        x: 1453
+        y: 646
+      positionAbsolute:
+        x: 1453
+        y: 646
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#llm.text#}}
+
+
+          <button data-message="⭐アプリを作成する⭐">⭐アプリを作成する⭐</button>'
+        desc: ''
+        selected: false
+        title: 回答
+        type: answer
+        variables: []
+      height: 135
+      id: answer
+      position:
+        x: 2119
+        y: 646
+      positionAbsolute:
+        x: 2119
+        y: 646
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: ae005457-ace4-4248-bce0-cde0909dd4b9
+            value: ⭐アプリを作成する⭐
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: 'true'
+          logical_operator: and
+        - case_id: f3b8c083-710f-4e79-90f0-582f623f9125
+          conditions:
+          - comparison_operator: is
+            id: aa2179b9-258f-4068-b3cf-767d9cddcb37
+            value: アプリ作成
+            varType: string
+            variable_selector:
+            - conversation
+            - phase
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 173
+      id: '1754211279449'
+      position:
+        x: 363
+        y: 606
+      positionAbsolute:
+        x: 363
+        y: 606
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: 'デモアプリを作成します。
+
+          完成次第メールが来ますので、少々お待ちください。
+
+
+          メールが来て中身を確認して何かご不明点等ございましたらXXXまでご連絡をお願いします。'
+        desc: ''
+        selected: false
+        title: 回答 2
+        type: answer
+        variables: []
+      height: 165
+      id: '1754211358214'
+      position:
+        x: 1453
+        y: 421
+      positionAbsolute:
+        x: 1453
+        y: 421
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - llm
+          - text
+          variable_selector:
+          - conversation
+          - rdd
+          write_mode: over-write
+        selected: false
+        title: 変数代入
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1754211533459'
+      position:
+        x: 1786
+        y: 646
+      positionAbsolute:
+        x: 1786
+        y: 646
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-82
+            key: ''
+            type: text
+            value: "{\n  \"prompt\": \"{{#conversation.rdd#}}\",\n  \"user_email\"\
+              : \"{{#conversation.gmail_address#}}\"\n}"
+          type: json
+        desc: ''
+        headers: Content-Type:application/json
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: false
+        timeout:
+          connect: 120
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+          read: 120
+          write: 120
+        title: HTTP リクエスト
+        type: http-request
+        url: https://3c49570faccc.ngrok-free.app/generate-code-interactive
+        variables: []
+      height: 154
+      id: '1754211607246'
+      position:
+        x: 1120
+        y: 459
+      positionAbsolute:
+        x: 1120
+        y: 459
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: "デモ作成後にメールでリンクをお送りするので、メールアドレスを教えてください（gmail限定）\n\n<form data-format='json'>\n\
+          \  <label for=\"gmail_address\">gmailアドレス：</label>\n  <input type=\"text\"\
+          \ name=\"gmail_address\" />\n  <button>送信</button>\n</form>"
+        desc: ''
+        selected: false
+        title: メールアドレスお伺い
+        type: answer
+        variables: []
+      height: 197
+      id: '1754303211778'
+      position:
+        x: 787
+        y: 298.5
+      positionAbsolute:
+        x: 787
+        y: 298.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        items:
+        - input_type: constant
+          operation: set
+          value: アプリ作成
+          variable_selector:
+          - conversation
+          - phase
+          write_mode: over-write
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1754303939058'
+          - text
+          variable_selector:
+          - conversation
+          - gmail_address
+          write_mode: over-write
+        selected: false
+        title: 情報セット
+        type: assigner
+        version: '2'
+      height: 115
+      id: '1754303321688'
+      position:
+        x: 1426.0885174717034
+        y: 286.3361189622246
+      positionAbsolute:
+        x: 1426.0885174717034
+        y: 286.3361189622246
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: JSON data
+            ja_JP: JSON data
+            pt_BR: JSON数据
+            zh_Hans: JSON数据
+          label:
+            en_US: JSON data
+            ja_JP: JSON data
+            pt_BR: JSON data
+            zh_Hans: JSON数据
+          llm_description: JSON data to be processed
+          max: null
+          min: null
+          name: content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: JSON fields to be parsed
+            ja_JP: JSON fields to be parsed
+            pt_BR: JSON fields to be parsed
+            zh_Hans: 需要解析的 JSON 字段
+          label:
+            en_US: JSON filter
+            ja_JP: JSON filter
+            pt_BR: JSON filter
+            zh_Hans: JSON解析对象
+          llm_description: JSON fields to be parsed
+          max: null
+          min: null
+          name: json_filter
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: 1
+          form: form
+          human_description:
+            en_US: Ensure the JSON output is ASCII encoded
+            ja_JP: Ensure the JSON output is ASCII encoded
+            pt_BR: Ensure the JSON output is ASCII encoded
+            zh_Hans: 确保输出的 JSON 是 ASCII 编码
+          label:
+            en_US: Ensure ASCII
+            ja_JP: Ensure ASCII
+            pt_BR: Ensure ASCII
+            zh_Hans: 确保 ASCII
+          llm_description: ''
+          max: null
+          min: null
+          name: ensure_ascii
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        params:
+          content: ''
+          ensure_ascii: ''
+          json_filter: ''
+        provider_id: langgenius/json_process/json_process
+        provider_name: langgenius/json_process/json_process
+        provider_type: builtin
+        selected: false
+        title: JSON Parse
+        tool_configurations:
+          ensure_ascii:
+            type: constant
+            value: true
+        tool_description: A tool for extracting JSON objects
+        tool_label: JSON Parse
+        tool_name: parse
+        tool_node_version: '2'
+        tool_parameters:
+          content:
+            type: mixed
+            value: '{{#sys.query#}}'
+          json_filter:
+            type: mixed
+            value: gmail_address
+        type: tool
+      height: 89
+      id: '1754303939058'
+      position:
+        x: 1120
+        y: 332
+      positionAbsolute:
+        x: 1120
+        y: 332
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -578.406163613751
+      y: -4.786601066702872
+      zoom: 0.6569743814631636
